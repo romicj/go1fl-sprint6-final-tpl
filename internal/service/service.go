@@ -1,14 +1,15 @@
 package service
 
-import "github.com/Yandex-Practicum/go1fl-sprint6-final/pkg/morse"
+import (
+	"strings"
+
+	"github.com/Yandex-Practicum/go1fl-sprint6-final/pkg/morse"
+)
 
 func isMorse(s string) bool {
-	for _, ch := range s {
-		if ch != '.' && ch != '-' && ch != ' ' {
-			return false
-		}
-	}
-	return true
+	return strings.ContainsFunc(s, func(r rune) bool {
+		return r == '.' || r == '-' || r == ' '
+	})
 }
 
 func Convert(s string) string {
